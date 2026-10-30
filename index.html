@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Faceless Finance · Channel research</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23151719'/%3E%3Ctext x='32' y='45' font-family='Arial' font-size='34' font-weight='700' fill='%23C9B48A' text-anchor='middle'%3E%24%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root {
+  --bg: #F1EEE7; --surface: #E6E1D8; --fg: #151719; --muted: #55575A; --line: rgba(21,23,25,0.14);
+  --accent: #8C774F; --sage: #6F7F6E; --new: #B89A62; --track: rgba(21,23,25,0.08);
+  --display: "Bebas Neue", "Oswald", "Arial Narrow", sans-serif;
+  --body: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #151719; --surface: #1F2123; --fg: #F1EEE7; --muted: #B5AFA5; --line: rgba(241,238,231,0.14); --accent: #C9B48A; --sage: #9EAD9D; --track: rgba(241,238,231,0.08); color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #151719; --surface: #1F2123; --fg: #F1EEE7; --muted: #B5AFA5; --line: rgba(241,238,231,0.14); --accent: #C9B48A; --sage: #9EAD9D; --track: rgba(241,238,231,0.08); color-scheme: dark; }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 15px; line-height: 1.55; margin: 0; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 36px 16px 56px; display: flex; flex-direction: column; gap: 52px; }
+@media (min-width: 700px) { .wrap { padding-inline: 24px; } }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; letter-spacing: 0.01em; text-wrap: balance; margin: 0; line-height: 0.95; }
+h1 { font-size: clamp(48px, 8vw, 88px); }
+h2 { font-size: clamp(32px, 4.6vw, 44px); }
+h3 { font-size: clamp(24px, 3vw, 30px); }
+h4 { margin: 0; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+p { margin: 0; max-width: 68ch; }
+a { color: inherit; }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); }
+.lead { font-size: 18px; color: var(--muted); max-width: 60ch; }
+header, section { display: flex; flex-direction: column; gap: 20px; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { font-size: 13px; font-weight: 500; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; }
+.chip b { font-weight: 600; color: var(--accent); }
+.note { font-size: 13px; color: var(--muted); }
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 360px); gap: 40px; align-items: start; }
+.two > * { min-width: 0; }
+.panel { background: var(--surface); border-radius: 6px; padding: 22px; display: flex; flex-direction: column; gap: 12px; }
+.panel p { font-size: 15px; }
+.panel .big { font-family: var(--display); font-size: 34px; line-height: 1; }
+
+/* bars */
+.bars { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.bars li { display: grid; grid-template-columns: 190px minmax(0, 1fr) 34px; gap: 14px; align-items: center; font-size: 14px; }
+.track { height: 14px; background: var(--track); border-radius: 2px; overflow: hidden; }
+.fill { height: 100%; background: var(--accent); border-radius: 2px; }
+.bars li.low .fill { background: var(--muted); opacity: 0.55; }
+.bars li.low { color: var(--muted); }
+.val { font-family: var(--display); font-size: 24px; line-height: 1; text-align: right; }
+
+/* proof table */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 14px; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+th { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); background: var(--surface); }
+tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; white-space: nowrap; }
+td.num b { font-family: var(--display); font-weight: 400; font-size: 22px; line-height: 1; }
+.ch { display: flex; align-items: center; gap: 12px; min-width: 260px; }
+.ch img { width: 96px; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 3px; flex: none; background: var(--surface); }
+.ch b { font-weight: 600; display: block; }
+.ch span { font-size: 12px; color: var(--muted); }
+td.best a { text-decoration: none; }
+td.best a:hover { text-decoration: underline; }
+td.best small { display: block; font-size: 12px; color: var(--muted); }
+.tag { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 8px; border-radius: 3px; background: var(--surface); white-space: nowrap; }
+.tag.a { background: var(--accent); color: var(--bg); }
+.tag.b { background: var(--sage); color: var(--bg); }
+
+/* cards */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+.card { border: 1px solid var(--line); border-radius: 6px; padding: 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.card p { font-size: 14px; }
+.card .ex { font-size: 13px; color: var(--muted); }
+.card .ex b { color: var(--fg); font-weight: 600; }
+
+/* options */
+.opts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.opt { border: 1px solid var(--line); border-radius: 6px; padding: 20px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.opt.pick { border: 2px solid var(--accent); background: var(--surface); }
+.opt-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.letter { font-family: var(--display); font-size: 56px; line-height: 0.8; color: var(--accent); }
+.opt img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 4px; background: var(--surface); }
+.opt dl { margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
+.opt dt { font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+.opt dd { margin: 0; }
+.opt ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
+
+/* next */
+.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.steps li { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.steps li:last-child { border-bottom: 0; }
+.when { font-weight: 600; white-space: nowrap; }
+.steps li.done .when { color: var(--accent); }
+.skip { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
+.skip b { font-weight: 600; }
+footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 18px; display: flex; flex-direction: column; gap: 6px; }
+
+@media (max-width: 900px) { .opts { grid-template-columns: 1fr; } .two { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  .bars li { grid-template-columns: 120px minmax(0, 1fr) 28px; gap: 10px; font-size: 13px; }
+  .steps li { grid-template-columns: 1fr; gap: 2px; }
+}
+@media print {
+  body { font-size: 11px; }
+  .wrap { gap: 22px; padding: 0; }
+  h1 { font-size: 44px; } h2 { font-size: 26px; }
+  .opts { grid-template-columns: repeat(3, 1fr); }
+  .two { grid-template-columns: 1fr 300px; }
+  section, .opt, .card, tr { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<header>
+  <div class="eyebrow">Faceless finance channel · Research · 30 October 2026</div>
+  <h1>What wins in YouTube finance right now</h1>
+  <p class="lead">We checked 399 finance channels to find where a brand new faceless channel can grow fast. The short answer: stories and explainers, not money tips.</p>
+  <div class="chips">
+    <span class="chip"><b>39</b> searches</span>
+    <span class="chip"><b>6</b> topic areas</span>
+    <span class="chip"><b>399</b> channels checked</span>
+    <span class="chip">uploads from the <b>last 12 months</b></span>
+  </div>
+</header>
+
+<section class="two">
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <h2>Where small channels win</h2>
+    <p class="note">Channels under 300K subscribers whose recent videos get more views than they have subscribers, by topic area.</p>
+    <ul class="bars">
+      <li><span>Business stories</span><span class="track"><span class="fill" style="width:100%;display:block"></span></span><span class="val">21</span></li>
+      <li><span>Economics explained</span><span class="track"><span class="fill" style="width:33%;display:block"></span></span><span class="val">7</span></li>
+      <li><span>Money history and scams</span><span class="track"><span class="fill" style="width:33%;display:block"></span></span><span class="val">7</span></li>
+      <li class="low"><span>Personal finance</span><span class="track"><span class="fill" style="width:9.5%;display:block"></span></span><span class="val">2</span></li>
+      <li class="low"><span>Wealth and rich people</span><span class="track"><span class="fill" style="width:4.8%;display:block"></span></span><span class="val">1</span></li>
+      <li class="low"><span>Investing and markets</span><span class="track"><span class="fill" style="width:0%;display:block"></span></span><span class="val">0</span></li>
+    </ul>
+  </div>
+  <div class="panel">
+    <h4>The verdict</h4>
+    <p class="big">Stories beat tips.</p>
+    <p>Personal finance and investing belong to big channels with a face on camera. Business stories, money history and economics explainers are where new faceless channels break through.</p>
+  </div>
+</section>
+
+<section>
+  <h2>New channels that blew up</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Channel</th><th>Style</th><th class="num">First video</th><th class="num">Videos</th><th class="num">Total views</th><th>Best video</th></tr></thead>
+      <tbody>
+        <tr><td><div class="ch"><img src="https://i.ytimg.com/vi/w5kdK-dQ414/mqdefault.jpg" alt="" loading="lazy"><div><b>Fred, Money Historian</b><span>5K subscribers</span></div></div></td><td><span class="tag a">Cartoon explainer</span></td><td class="num">Mar 2026</td><td class="num"><b>6</b></td><td class="num"><b>439K</b></td><td class="best"><a href="https://www.youtube.com/watch?v=w5kdK-dQ414" target="_blank" rel="noopener">The 2008 Financial Crisis Explained Like You're 5</a><small>245K views</small></td></tr>
+        <tr><td><div class="ch"><img src="https://i.ytimg.com/vi/jjRo2QSMybU/mqdefault.jpg" alt="" loading="lazy"><div><b>Capital Case</b><span>11K subscribers</span></div></div></td><td><span class="tag a">Cartoon explainer</span></td><td class="num">Feb 2026</td><td class="num"><b>12</b></td><td class="num"><b>1.3M</b></td><td class="best"><a href="https://www.youtube.com/watch?v=jjRo2QSMybU" target="_blank" rel="noopener">The Rise (And Fall?) of BYD in 11 Minutes</a><small>133K views</small></td></tr>
+        <tr><td><div class="ch"><img src="https://i.ytimg.com/vi/nr5dcBPACH0/mqdefault.jpg" alt="" loading="lazy"><div><b>Casual Economics</b><span>93K subscribers</span></div></div></td><td><span class="tag a">Cartoon explainer</span></td><td class="num">Mar 2024</td><td class="num"><b>11</b></td><td class="num"><b>5.6M</b></td><td class="best"><a href="https://www.youtube.com/watch?v=nr5dcBPACH0" target="_blank" rel="noopener">How a Debt Crisis Ruined Greece</a><small>405K views</small></td></tr>
+        <tr><td><div class="ch"><img src="https://i.ytimg.com/vi/ohCAPyqlJpo/mqdefault.jpg" alt="" loading="lazy"><div><b>The Invisible Game</b><span>57K subscribers</span></div></div></td><td><span class="tag b">What's happening to X</span></td><td class="num">May 2025</td><td class="num"><b>28</b></td><td class="num"><b>10.8M</b></td><td class="best"><a href="https://www.youtube.com/watch?v=ohCAPyqlJpo" target="_blank" rel="noopener">The (Overdue) Collapse of Bullsh*t Companies</a><small>3.0M views</small></td></tr>
+        <tr><td><div class="ch"><img src="https://i.ytimg.com/vi/MY1JsJluSSA/mqdefault.jpg" alt="" loading="lazy"><div><b>Investigate Money</b><span>26K subscribers</span></div></div></td><td><span class="tag">History, AI scenes</span></td><td class="num">Feb 2025</td><td class="num"><b>27</b></td><td class="num"><b>4.8M</b></td><td class="best"><a href="https://www.youtube.com/watch?v=MY1JsJluSSA" target="_blank" rel="noopener">The First 6 Hours of the Great Depression</a><small>1.5M views</small></td></tr>
+        <tr><td><div class="ch"><img src="https://i.ytimg.com/vi/H9TmscxKsNw/mqdefault.jpg" alt="" loading="lazy"><div><b>Findicate</b><span>17K subscribers</span></div></div></td><td><span class="tag">Investor documentary</span></td><td class="num">Jan 2026</td><td class="num"><b>13</b></td><td class="num"><b>1.3M</b></td><td class="best"><a href="https://www.youtube.com/watch?v=H9TmscxKsNw" target="_blank" rel="noopener">Ken Griffin: The Man Who Owns The Market</a><small>265K views</small></td></tr>
+        <tr><td><div class="ch"><img src="https://i.ytimg.com/vi/crMQ9LpJTiw/mqdefault.jpg" alt="" loading="lazy"><div><b>Built on Lies</b><span>2K subscribers</span></div></div></td><td><span class="tag">Scandal documentary</span></td><td class="num">Jul 2026</td><td class="num"><b>12</b></td><td class="num"><b>491K</b></td><td class="best"><a href="https://www.youtube.com/watch?v=crMQ9LpJTiw" target="_blank" rel="noopener">The Billionaire Who Bought a Country With a $7 Billion Lie</a><small>89K views</small></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">Fred posted 6 videos in one week in March, then stopped. They still pull views today: evergreen topics keep working. Views are not income, and these channels' earnings are not public.</p>
+</section>
+
+<section>
+  <h2>What the winners have in common</h2>
+  <div class="cards">
+    <div class="card"><h4>No face</h4><p>Every winner is faceless. A clear voice, strong visuals and a real story carry the video.</p></div>
+    <div class="card"><h4>Thumbnail</h4><p>One strong image and 2 to 4 big words with emotion.</p><p class="ex"><b>GAME OVER</b> · <b>QUIETLY GOING BUST</b> · <b>WHAT WENT WRONG?</b></p></div>
+    <div class="card"><h4>Title</h4><p>A few formulas repeat across channels.</p><p class="ex">X Explained Like You're 5 · The Rise (And Fall?) of X in 11 Minutes · WTF Is Happening to X · Why X Failed</p></div>
+    <div class="card"><h4>Topic and length</h4><p>Famous companies and money events, from Rockefeller to the AI bubble. Mostly 11 to 25 minutes.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Three directions</h2>
+  <div class="opts">
+    <article class="opt pick">
+      <div class="opt-head"><span class="letter">A</span><span class="tag a">Recommended</span></div>
+      <h3>Business and money, explained simply</h3>
+      <img src="https://i.ytimg.com/vi/sMH8WchxQR8/mqdefault.jpg" alt="" loading="lazy">
+      <dl>
+        <div><dt>Format</dt><dd>A recurring cartoon character, animated scenes and charts, 10 to 15 minutes.</dd></div>
+        <div><dt>Like</dt><dd>Fred, Capital Case, Casual Economics, Crayon Capital</dd></div>
+        <div><dt>Proof</dt><dd>6 to 12 videos brought 0.4M to 5.6M views.</dd></div>
+        <div><dt>Why</dt><dd><ul><li>We draw everything: no footage, no copyright strikes.</li><li>Fits the animation setup we already have.</li><li>A recurring character becomes a brand.</li><li>2 videos a week is realistic.</li></ul></dd></div>
+        <div><dt>Watch out</dt><dd>The style is getting popular. It needs its own look, never a copy.</dd></div>
+      </dl>
+    </article>
+    <article class="opt">
+      <div class="opt-head"><span class="letter">B</span></div>
+      <h3>What's happening to X</h3>
+      <img src="https://i.ytimg.com/vi/ohCAPyqlJpo/mqdefault.jpg" alt="" loading="lazy">
+      <dl>
+        <div><dt>Format</dt><dd>Real photos and logos, bold text, driven by the news. 15 to 25 minutes.</dd></div>
+        <div><dt>Like</dt><dd>The Invisible Game, Internet Education, Front Page</dd></div>
+        <div><dt>Proof</dt><dd>28 videos, 10.8M views.</dd></div>
+        <div><dt>Watch out</dt><dd>Needs speed on the news, real footage needs copyright care, and the tone is very negative.</dd></div>
+      </dl>
+    </article>
+    <article class="opt">
+      <div class="opt-head"><span class="letter">C</span></div>
+      <h3>Money history and scandals</h3>
+      <img src="https://i.ytimg.com/vi/MY1JsJluSSA/mqdefault.jpg" alt="" loading="lazy">
+      <dl>
+        <div><dt>Format</dt><dd>Crashes, frauds and famous traders, with realistic history scenes. 20 to 100 minutes.</dd></div>
+        <div><dt>Like</dt><dd>Investigate Money, Findicate, Built on Lies</dd></div>
+        <div><dt>Proof</dt><dd>One video hit 1.5M views at 26K subscribers.</dd></div>
+        <div><dt>Watch out</dt><dd>Heavy research for each long video, so fewer uploads. Most of these topics also fit inside A.</dd></div>
+      </dl>
+    </article>
+  </div>
+</section>
+
+<section class="two">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <h2>The next steps</h2>
+    <ol class="steps">
+      <li class="done"><span class="when">30 Oct</span><span>Research done ✓</span></li>
+      <li><span class="when">By Sun 1 Nov</span><span>Pick a direction: A, B or C</span></li>
+      <li><span class="when">2 to 8 Nov</span><span>Channel name, look and voice, the first 10 topics, and the production setup</span></li>
+      <li><span class="when">By Sun 15 Nov</span><span>3 test videos, first video live</span></li>
+      <li><span class="when">About 13 Dec</span><span>Checkpoint at video 10. Working if 2 of 3: a 4%+ click rate, 40%+ of each video watched, one video at 10K+ views</span></li>
+    </ol>
+  </div>
+  <div class="panel">
+    <h4>Skip these</h4>
+    <ul class="skip">
+      <li><b>Money tips and investing.</b> Big channels with a face own them: 0 to 2 small winners in the data.</li>
+      <li><b>Mass-produced AI drama and "POV" stories.</b> They get views today, but low-effort mass uploads are exactly what YouTube's monetization rules target.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p>Method: 39 YouTube searches across 6 finance areas, uploads from the last 12 months, 40 results each. Every channel with a video above 50K views was looked up (399 channels). Channels aimed at Indian viewers and off-topic channels (celebrity, gaming) were left out.</p>
+  <p>Data as of 30 October 2026. View counts change daily.</p>
+</footer>
+
+</main>
+</body>
+</html>
